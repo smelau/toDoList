@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do App</title>
+    <link rel="stylesheet" href="style.css">
     <!--<script src="controller.js" ></script>
     <script src="model.js" ></script>
     <script defer src="view.js"></script>
@@ -16,7 +17,7 @@ view
 </head>
 <body>
     <div id="app"></div>
-
+<div class= "container">
     <script>
         //model
         const toDoListe = []; 
@@ -34,21 +35,22 @@ view
         
         let appDiv = document.getElementById('app');
         html +=  `  
-        <h2>To Do List App</h2>
+        <div class="utputField">
+        <h2 class="header">To Do List App</h2>
         <input type="text" oninput="tasks=this.value" placeholder="Write Something..."/> 
-        <button onclick="addTask()">Click To Add To List</button></br>
+        <button class="myButton" onclick="addTask()">Click To Add To List</button></br></div>
         `
         for (let i = 0; i < toDoListe.length; i++) {
         const toDo = toDoListe[i];
        html += `
-       <div><li>${toDoListe[i]}</li></br> <button onclick="save4Later(${i})">Save For Later</button> <button onclick="doneTask(${i})">Done</button></div> </br><hr>`
+       <div class="utputListe" ><li>${toDoListe[i]}</li></br> <button onclick="save4Later(${i})" <a href="#" class="myButton" </a> >Save For Later</<button class="myButton"> <button class="myButton" onclick="doneTask(${i})">Done</button></div> </br><hr>`
         }
-        html += `<h3>Save for later</h3>`
+        html += `<h3 >Save For Later</h3>`
         for (let i = 0; i < forLaterlist.length; i++) {
         
        html += `
        
-       <div> <li>  ${forLaterlist[i]} </li> </br><button onclick="doneTask2(${i})">Done</button> </div> </br><hr>`;
+       <div class="forLater"> <li>  ${forLaterlist[i]} </li> </br><button onclick="doneTask2(${i})" <a href="#" class="myButton" </a> >Done</button> </div> </br><hr>`;
         } 
         html += `
        <h6>Points: ${points}</h6>
@@ -80,10 +82,12 @@ view
          function save4Later(index){
             forLaterlist.push(toDoListe[index])
             toDoListe.splice(index, 1)
+            
             showApp();
          }
          function doneTask2(finish){
             forLaterlist.splice(finish, 1)
+            points ++;
             showApp();
         }
 
@@ -96,5 +100,6 @@ view
         
     </script>
     
+    </div>
 </body>
 </html>
